@@ -4,7 +4,7 @@ function Layout({ children }) {
   return (
     <div className="flex">
       <Sidebar />
-      <div>{children}</div>
+      <main className="p-8">{children}</main>
     </div>
   );
 }
