@@ -4,7 +4,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ["'Raleway'"],
+        body: ["'Roboto'"],
+      },
+      colors: {
+        primary: "#e55644",
       },
     },
   },
