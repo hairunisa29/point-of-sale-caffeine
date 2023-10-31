@@ -2,7 +2,7 @@ import { formatCurrency } from "../utils/formatter";
 
 function ProductCard({ img, name, price, qty }) {
   return (
-    <div className="block rounded-lg p-4 shadow-sm shadow-indigo-100 bg-white">
+    <div className="block rounded-lg p-4 shadow-sm shadow-indigo-100 bg-white hover:shadow-md">
       <img
         alt="Home"
         src={img}
