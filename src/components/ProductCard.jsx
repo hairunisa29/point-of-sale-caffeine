@@ -1,8 +1,11 @@
 import { formatCurrency } from "../utils/formatter";
 
-function ProductCard({ img, name, price, qty }) {
+function ProductCard({ img, name, price, stock, onClickProduct }) {
   return (
-    <div className="block rounded-lg p-4 shadow-sm shadow-indigo-100 bg-white hover:shadow-md">
+    <div
+      className="block rounded-lg p-4 shadow-sm shadow-indigo-100 bg-white hover:shadow-md cursor-pointer"
+      onClick={onClickProduct}
+    >
       <img
         alt="Home"
         src={img}
@@ -15,7 +18,7 @@ function ProductCard({ img, name, price, qty }) {
           <span className="text-md font-bold text-primary">
             {formatCurrency(price)}
           </span>
-          <span className="text-sm">Stock: {qty}</span>
+          <span className="text-sm">Stock: {stock}</span>
         </div>
       </div>
     </div>

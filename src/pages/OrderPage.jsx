@@ -1,11 +1,16 @@
 import axios from "axios";
 import useSWR from "swr";
+import { useDispatch, useSelector } from "react-redux";
+import { SyncLoader } from "react-spinners";
 import ProductCard from "../components/ProductCard";
 import { productsData } from "../data/Static";
 import CategoryItem from "../components/CategoryItem";
-import { SyncLoader } from "react-spinners";
+import { addItem } from "../store/reducers/cartSlice";
 
 function OrderPage() {
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
+  console.log(cartItems);
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
   const { data, isLoading, error } = useSWR(
@@ -14,6 +19,10 @@ function OrderPage() {
   );
 
   const categories = Array.from(new Set(data?.map((item) => item.category)));
+
+  const handleAddToCart = (product) => {
+    dispatch(addItem(product));
+  };
 
   return (
     <section className="flex">
@@ -35,7 +44,8 @@ function OrderPage() {
                   img={product.img}
                   name={product.name}
                   price={product.price}
-                  qty={product.qty}
+                  stock={product.stock}
+                  onClickProduct={() => handleAddToCart(product)}
                 />
               ))}
             </div>
@@ -45,7 +55,12 @@ function OrderPage() {
         )}
       </div>
 
-      <div className="bg-white w-[480px] p-8">tes</div>
+      <div className="bg-white w-[480px] p-8">
+        <h3 className="font-bold">Current Order</h3>
+        {cartItems?.map((item) => (
+          <div>{item.name}</div>
+        ))}
+      </div>
     </section>
   );
 }

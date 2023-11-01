@@ -6,7 +6,7 @@
       "category": "Coffee",
       "price": 40000,
       "img": "/src/assets/images/iced-americano.jpg",
-      "qty": 5
+      "stock": 5
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "category": "Coffee",
       "price": 50000,
       "img": "/src/assets/images/latte.jpg",
-      "qty": 5
+      "stock": 5
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "category": "Coffee",
       "price": 40000,
       "img": "/src/assets/images/espresso.jpg",
-      "qty": 3
+      "stock": 3
     },
     {
       "id": 4,
@@ -30,7 +30,7 @@
       "category": "Coffee",
       "price": 55000,
       "img": "/src/assets/images/caramel-machiato.jpg",
-      "qty": 3
+      "stock": 3
     },
     {
       "id": 5,
@@ -38,7 +38,7 @@
       "category": "Non Coffee",
       "price": 45000,
       "img": "/src/assets/images/smoothies.jpg",
-      "qty": 2
+      "stock": 2
     },
     {
       "id": 6,
@@ -46,7 +46,7 @@
       "category": "Non Coffee",
       "price": 50000,
       "img": "/src/assets/images/strawberry-milkshake.jpg",
-      "qty": 5
+      "stock": 5
     },
     {
       "id": 7,
@@ -54,7 +54,7 @@
       "category": "Pastry",
       "price": 50000,
       "img": "/src/assets/images/cheesecake.jpg",
-      "qty": 7
+      "stock": 7
     },
     {
       "id": 8,
@@ -62,7 +62,7 @@
       "category": "Pastry",
       "price": 45000,
       "img": "/src/assets/images/cinnamon-roll.jpg",
-      "qty": 8
+      "stock": 8
     },
     {
       "id": 9,
@@ -70,7 +70,7 @@
       "category": "Pastry",
       "price": 40000,
       "img": "/src/assets/images/croissant.jpg",
-      "qty": 12
+      "stock": 12
     }
   ]
 }
