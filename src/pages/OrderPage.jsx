@@ -5,7 +5,11 @@ import { SyncLoader } from "react-spinners";
 import ProductCard from "../components/ProductCard";
 // import { productsData } from "../data/Static";
 import CategoryItem from "../components/CategoryItem";
-import { addItem } from "../store/reducers/cartSlice";
+import {
+  addItem,
+  incrementQty,
+  decrementQty,
+} from "../store/reducers/cartSlice";
 import CartItem from "../components/CartItem";
 
 function OrderPage() {
@@ -23,6 +27,14 @@ function OrderPage() {
 
   const handleAddToCart = (product) => {
     dispatch(addItem(product));
+  };
+
+  const handleIncrement = (id) => {
+    dispatch(incrementQty(id));
+  };
+
+  const handleDecrement = (id) => {
+    dispatch(decrementQty(id));
   };
 
   return (
@@ -66,6 +78,8 @@ function OrderPage() {
               name={item.name}
               price={item.price}
               qty={item.quantity}
+              handleIncrement={() => handleIncrement(item.id)}
+              handleDecrement={() => handleDecrement(item.id)}
             />
           ))}
         </div>
