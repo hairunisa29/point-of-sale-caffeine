@@ -3,14 +3,15 @@ import useSWR from "swr";
 import { useDispatch, useSelector } from "react-redux";
 import { SyncLoader } from "react-spinners";
 import ProductCard from "../components/ProductCard";
-import { productsData } from "../data/Static";
+// import { productsData } from "../data/Static";
 import CategoryItem from "../components/CategoryItem";
 import { addItem } from "../store/reducers/cartSlice";
+import CartItem from "../components/CartItem";
 
 function OrderPage() {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems);
+
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
   const { data, isLoading, error } = useSWR(
@@ -56,10 +57,18 @@ function OrderPage() {
       </div>
 
       <div className="bg-white w-[480px] p-8">
-        <h3 className="font-bold">Current Order</h3>
-        {cartItems?.map((item) => (
-          <div key={item.id}>{item.name}</div>
-        ))}
+        <h3 className="font-bold mb-4">Current Order</h3>
+        <div className="flex flex-col gap-4">
+          {cartItems?.map((item) => (
+            <CartItem
+              key={item.id}
+              image={item.img}
+              name={item.name}
+              price={item.price}
+              qty={item.quantity}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
