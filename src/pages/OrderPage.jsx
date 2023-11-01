@@ -58,7 +58,7 @@ function OrderPage() {
       <div className="bg-white w-[480px] p-8">
         <h3 className="font-bold">Current Order</h3>
         {cartItems?.map((item) => (
-          <div>{item.name}</div>
+          <div key={item.id}>{item.name}</div>
         ))}
       </div>
     </section>
