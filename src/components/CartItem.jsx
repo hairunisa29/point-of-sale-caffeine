@@ -10,15 +10,15 @@ function CartItem({ image, name, price, qty }) {
           <span className="font-bold text-primary">
             {formatCurrency(price)}
           </span>
-          <div className="flex justify-between gap-2">
+          <div className="flex self-center justify-between gap-3">
             <button
-              className={`${qty === 1 ? "bg-red-300" : "bg-primary"} h-full w-5 rounded text-white`}
+              className={`${qty === 1 ? "bg-red-300" : "bg-primary"} h-full w-5 rounded text-sm text-white`}
               disabled={qty === 1}
             >
               -
             </button>
-            <span className="text-gray-500">{qty}</span>
-            <button className="bg-primary h-full w-5 rounded text-white">
+            <span className="text-gray-500 text-sm">{qty}</span>
+            <button className="bg-primary h-full w-5 rounded text-sm text-white">
               +
             </button>
           </div>
