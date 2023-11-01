@@ -9,16 +9,16 @@ function ProductCard({ img, name, price, stock, onClickProduct }) {
       <img
         alt="Home"
         src={img}
-        className="h-56 w-full rounded-md object-cover"
+        className="h-48 w-full rounded-md object-cover"
       />
 
       <div className="flex flex-col gap-2 mt-3">
-        <h3 className="font-bold">{name}</h3>
+        <h3 className="font-bold text-lg">{name}</h3>
         <div className="flex justify-between">
-          <span className="text-md font-bold text-primary">
+          <span className="text-lg font-bold text-primary">
             {formatCurrency(price)}
           </span>
-          <span className="text-sm">Stock: {stock}</span>
+          <span className="text-sm self-center">Stock: {stock}</span>
         </div>
       </div>
     </div>
