@@ -104,7 +104,7 @@ function OrderPage() {
         <div>
           <div className="flex justify-between">
             <span className="font-bold text-lg">Total</span>
-            <span className="pr-4 font-bold text-lg">
+            <span className="font-bold text-lg">
               {formatCurrency(cartTotalPrice)}
             </span>
           </div>
