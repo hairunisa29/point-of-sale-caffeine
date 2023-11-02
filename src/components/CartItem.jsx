@@ -1,3 +1,4 @@
+import { BiTrash } from "react-icons/bi";
 import { formatCurrency } from "../utils/formatter";
 
 function CartItem({
@@ -7,6 +8,7 @@ function CartItem({
   qty,
   handleIncrement,
   handleDecrement,
+  handleRemoveCartItem,
 }) {
   return (
     <div className="flex gap-4 pr-4">
@@ -15,7 +17,13 @@ function CartItem({
       </div>
 
       <div className="w-[197.72px]">
-        <h3 className="font-bold">{name}</h3>
+        <div className="flex justify-between">
+          <h3 className="font-bold">{name}</h3>
+          <BiTrash
+            className="self-center text-primary cursor-pointer"
+            onClick={handleRemoveCartItem}
+          />
+        </div>
         <div className="flex justify-between mt-4">
           <span className="font-bold text-primary">
             {formatCurrency(price)}

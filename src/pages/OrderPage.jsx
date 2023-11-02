@@ -9,6 +9,7 @@ import {
   addItem,
   incrementQty,
   decrementQty,
+  removeItem,
 } from "../store/reducers/cartSlice";
 import CartItem from "../components/CartItem";
 
@@ -35,6 +36,10 @@ function OrderPage() {
 
   const handleDecrement = (id) => {
     dispatch(decrementQty(id));
+  };
+
+  const handleRemoveCartItem = (id) => {
+    dispatch(removeItem(id));
   };
 
   const cartTotalPrice = cartItems
@@ -74,7 +79,7 @@ function OrderPage() {
 
       <div className="sticky top-0 h-screen bg-white w-[480px] p-8 pr-4 flex flex-col justify-between">
         <div>
-          <h3 className="font-bold mb-4">Current Order</h3>
+          <h3 className="text-lg font-bold mb-4">Current Order</h3>
 
           <div className="flex flex-col gap-4 max-h-[280px] overflow-y-auto scrollbar">
             {cartItems?.length > 0 ? (
@@ -87,6 +92,7 @@ function OrderPage() {
                   qty={item.quantity}
                   handleIncrement={() => handleIncrement(item.id)}
                   handleDecrement={() => handleDecrement(item.id)}
+                  handleRemoveCartItem={() => handleRemoveCartItem(item.id)}
                 />
               ))
             ) : (
@@ -102,7 +108,7 @@ function OrderPage() {
               {formatCurrency(cartTotalPrice)}
             </span>
           </div>
-          
+
           <button className="rounded-lg bg-primary text-white w-full p-2 hover:bg-red-700">
             Continue to Payment
           </button>
