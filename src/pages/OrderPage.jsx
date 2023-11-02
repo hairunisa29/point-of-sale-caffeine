@@ -2,8 +2,8 @@ import axios from "axios";
 import useSWR from "swr";
 import { useDispatch, useSelector } from "react-redux";
 import { SyncLoader } from "react-spinners";
+import { formatCurrency } from "../utils/formatter";
 import ProductCard from "../components/ProductCard";
-// import { productsData } from "../data/Static";
 import CategoryItem from "../components/CategoryItem";
 import {
   addItem,
@@ -37,6 +37,10 @@ function OrderPage() {
     dispatch(decrementQty(id));
   };
 
+  const cartTotalPrice = cartItems
+    .map((item) => item.price * item.quantity)
+    .reduce((prevValue, currValue) => prevValue + currValue, 0);
+
   return (
     <section className="flex">
       <div className="w-full bg-gray-100 p-8">
@@ -68,24 +72,40 @@ function OrderPage() {
         )}
       </div>
 
-      <div className="sticky top-0 h-screen bg-white w-[480px] p-8 pr-4">
-        <h3 className="font-bold mb-4">Current Order</h3>
-        <div className="flex flex-col gap-4 max-h-[400px] overflow-y-auto scrollbar">
-          {cartItems?.length > 0 ? (
-            cartItems?.map((item) => (
-              <CartItem
-                key={item.id}
-                image={item.img}
-                name={item.name}
-                price={item.price}
-                qty={item.quantity}
-                handleIncrement={() => handleIncrement(item.id)}
-                handleDecrement={() => handleDecrement(item.id)}
-              />
-            ))
-          ) : (
-            <span>No items were added</span>
-          )}
+      <div className="sticky top-0 h-screen bg-white w-[480px] p-8 pr-4 flex flex-col justify-between">
+        <div>
+          <h3 className="font-bold mb-4">Current Order</h3>
+
+          <div className="flex flex-col gap-4 max-h-[280px] overflow-y-auto scrollbar">
+            {cartItems?.length > 0 ? (
+              cartItems?.map((item) => (
+                <CartItem
+                  key={item.id}
+                  image={item.img}
+                  name={item.name}
+                  price={item.price}
+                  qty={item.quantity}
+                  handleIncrement={() => handleIncrement(item.id)}
+                  handleDecrement={() => handleDecrement(item.id)}
+                />
+              ))
+            ) : (
+              <span>No items were added</span>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <div className="flex justify-between">
+            <span className="font-bold text-lg">Total</span>
+            <span className="pr-4 font-bold text-lg">
+              {formatCurrency(cartTotalPrice)}
+            </span>
+          </div>
+          
+          <button className="rounded-lg bg-primary text-white w-full p-2 hover:bg-red-700">
+            Continue to Payment
+          </button>
         </div>
       </div>
     </section>
