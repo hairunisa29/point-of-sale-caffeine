@@ -68,20 +68,24 @@ function OrderPage() {
         )}
       </div>
 
-      <div className="bg-white w-[480px] p-8">
+      <div className="sticky top-0 h-screen bg-white w-[480px] p-8 pr-4">
         <h3 className="font-bold mb-4">Current Order</h3>
-        <div className="flex flex-col gap-4">
-          {cartItems?.map((item) => (
-            <CartItem
-              key={item.id}
-              image={item.img}
-              name={item.name}
-              price={item.price}
-              qty={item.quantity}
-              handleIncrement={() => handleIncrement(item.id)}
-              handleDecrement={() => handleDecrement(item.id)}
-            />
-          ))}
+        <div className="flex flex-col gap-4 max-h-[400px] overflow-y-auto scrollbar">
+          {cartItems?.length > 0 ? (
+            cartItems?.map((item) => (
+              <CartItem
+                key={item.id}
+                image={item.img}
+                name={item.name}
+                price={item.price}
+                qty={item.quantity}
+                handleIncrement={() => handleIncrement(item.id)}
+                handleDecrement={() => handleDecrement(item.id)}
+              />
+            ))
+          ) : (
+            <span>No items were added</span>
+          )}
         </div>
       </div>
     </section>
