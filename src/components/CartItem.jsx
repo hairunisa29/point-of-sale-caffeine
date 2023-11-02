@@ -9,8 +9,11 @@ function CartItem({
   handleDecrement,
 }) {
   return (
-    <div className="flex gap-4">
-      <img src={image} className="rounded-lg w-20 h-20" />
+    <div className="flex gap-4 pr-4">
+      <div className="rounded-lg w-20 h-20">
+        <img src={image} className="rounded-lg w-full h-full object-cover" />
+      </div>
+
       <div className="w-[197.72px]">
         <h3 className="font-bold">{name}</h3>
         <div className="flex justify-between mt-4">
