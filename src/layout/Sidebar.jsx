@@ -12,7 +12,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-white text-gray-700 shadow h-screen">
+    <div className="sticky top-0 flex flex-col items-center bg-white text-gray-700 shadow h-screen">
       <div className="h-16 flex items-center w-full">
         <Link className="h-6 w-6 mx-auto" to="/">
           <img className="h-6 w-6 mx-auto" src="caffeine-logo.svg" alt="logo" />
