@@ -2,6 +2,7 @@ import axios from "axios";
 import useSWR from "swr";
 import { useDispatch, useSelector } from "react-redux";
 import { SyncLoader } from "react-spinners";
+import { GoSearch } from "react-icons/go";
 import { formatCurrency } from "../utils/formatter";
 import ProductCard from "../components/ProductCard";
 import CategoryItem from "../components/CategoryItem";
@@ -16,7 +17,8 @@ import { useEffect, useState } from "react";
 
 function OrderPage() {
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All Items");
+  const [search, setSearch] = useState("");
 
   const dispatch = useDispatch();
 
@@ -52,22 +54,37 @@ function OrderPage() {
 
   const handleFilterCategory = (category) => {
     setSelectedCategory(category);
-    let duplicateProducts = [...data];
+  };
 
-    if (category !== "All Items") {
-      const filteredData = duplicateProducts.filter(
-        (product) => product.category === category
-      );
-      setProducts(filteredData);
-    } else {
-      setProducts(duplicateProducts);
-    }
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
   };
 
   useEffect(() => {
-    setProducts(data);
-    setSelectedCategory("All Items");
-  }, [data]);
+    if (!data) {
+      return;
+    }
+
+    let duplicateProducts = [...data];
+    let filteredProducts = [];
+
+    if (selectedCategory !== "All Items") {
+      filteredProducts = duplicateProducts.filter(
+        (product) => product.category === selectedCategory
+      );
+      setProducts(filteredProducts);
+    } else {
+      setProducts(data);
+    }
+
+    // global search
+    if (search !== "") {
+      filteredProducts = duplicateProducts.filter((product) =>
+        product.name.toLowerCase().includes(search.toLowerCase())
+      );
+      setProducts(filteredProducts);
+    }
+  }, [data, search, selectedCategory]);
 
   const cartTotalPrice = cartItems
     .map((item) => item.price * item.quantity)
@@ -80,15 +97,30 @@ function OrderPage() {
 
         {!isLoading ? (
           <>
-            <div className="flex gap-4 mb-4">
-              {categories?.map((category, index) => (
-                <CategoryItem
-                  key={index}
-                  category={category}
-                  selectedCategory={selectedCategory}
-                  handleFilterCategory={() => handleFilterCategory(category)}
+            <div className="flex justify-between">
+              <div className="flex gap-4 mb-4">
+                {categories?.map((category, index) => (
+                  <CategoryItem
+                    key={index}
+                    category={category}
+                    selectedCategory={selectedCategory}
+                    handleFilterCategory={() => handleFilterCategory(category)}
+                  />
+                ))}
+              </div>
+
+              <div className="relative">
+                <input
+                  type="text"
+                  id="Search"
+                  placeholder="Search product..."
+                  className="w-64 rounded-md border-gray-200 p-3 shadow-sm sm:text-sm"
+                  value={search}
+                  onChange={handleSearch}
                 />
-              ))}
+
+                <GoSearch className="text-base absolute inset-y-3 end-3" />
+              </div>
             </div>
 
             <div className="grid grid-cols-3 gap-4">
