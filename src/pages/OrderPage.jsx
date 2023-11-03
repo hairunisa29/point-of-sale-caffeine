@@ -12,9 +12,14 @@ import {
   removeItem,
 } from "../store/reducers/cartSlice";
 import CartItem from "../components/CartItem";
+import { useEffect, useState } from "react";
 
 function OrderPage() {
+  const [products, setProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   const dispatch = useDispatch();
+
   const { cartItems } = useSelector((state) => state.cart);
 
   const fetchData = (url) => axios.get(url).then((response) => response.data);
@@ -24,7 +29,10 @@ function OrderPage() {
     fetchData
   );
 
-  const categories = Array.from(new Set(data?.map((item) => item.category)));
+  const categories = [
+    "All Items",
+    ...new Set(data?.map((item) => item.category)),
+  ];
 
   const handleAddToCart = (product) => {
     dispatch(addItem(product));
@@ -42,6 +50,25 @@ function OrderPage() {
     dispatch(removeItem(id));
   };
 
+  const handleFilterCategory = (category) => {
+    setSelectedCategory(category);
+    let duplicateProducts = [...data];
+
+    if (category !== "All Items") {
+      const filteredData = duplicateProducts.filter(
+        (product) => product.category === category
+      );
+      setProducts(filteredData);
+    } else {
+      setProducts(duplicateProducts);
+    }
+  };
+
+  useEffect(() => {
+    setProducts(data);
+    setSelectedCategory("All Items");
+  }, [data]);
+
   const cartTotalPrice = cartItems
     .map((item) => item.price * item.quantity)
     .reduce((prevValue, currValue) => prevValue + currValue, 0);
@@ -55,12 +82,17 @@ function OrderPage() {
           <>
             <div className="flex gap-4 mb-4">
               {categories?.map((category, index) => (
-                <CategoryItem key={index} category={category} />
+                <CategoryItem
+                  key={index}
+                  category={category}
+                  selectedCategory={selectedCategory}
+                  handleFilterCategory={() => handleFilterCategory(category)}
+                />
               ))}
             </div>
 
             <div className="grid grid-cols-3 gap-4">
-              {data?.map((product) => (
+              {products?.map((product) => (
                 <ProductCard
                   key={product.id}
                   img={product.img}
