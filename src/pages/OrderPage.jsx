@@ -1,6 +1,7 @@
 import axios from "axios";
 import useSWR from "swr";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 import { GoSearch } from "react-icons/go";
 import Swal from "sweetalert2";
@@ -22,6 +23,7 @@ function OrderPage() {
   const [search, setSearch] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { cartItems } = useSelector((state) => state.cart);
 
@@ -52,20 +54,17 @@ function OrderPage() {
     dispatch(addItem(product));
   };
 
-  const handleIncrement = (id) => {
-    dispatch(incrementQty(id));
-  };
-
-  const handleDecrement = (id) => {
-    dispatch(decrementQty(id));
-  };
+  const handleIncrement = (id) => dispatch(incrementQty(id));
+  const handleDecrement = (id) => dispatch(decrementQty(id));
 
   const handleRemoveCartItem = (id) => {
     dispatch(removeItem(id));
   };
 
-  const handleFilterCategory = (category) => {
-    setSelectedCategory(category);
+  const handleFilterCategory = (category) => setSelectedCategory(category);
+
+  const handleToPayment = () => {
+    navigate("/payment");
   };
 
   const handleSearch = (e) => {
@@ -104,7 +103,7 @@ function OrderPage() {
 
   return (
     <section className="flex">
-      <div className="w-full bg-gray-100 p-8">
+      <div className="w-3/4 bg-gray-100 p-8">
         <h1 className="text-2xl font-bold mb-4">Order</h1>
 
         {!isLoading ? (
@@ -153,7 +152,7 @@ function OrderPage() {
         )}
       </div>
 
-      <div className="sticky top-0 h-screen bg-white w-[480px] p-8 pr-4 flex flex-col justify-between">
+      <div className="sticky top-0 h-screen bg-white w-1/4 p-8 pr-4 flex flex-col justify-between">
         <div>
           <h3 className="text-lg font-bold mb-4">Current Order</h3>
 
@@ -185,7 +184,10 @@ function OrderPage() {
             </span>
           </div>
 
-          <button className="rounded-lg bg-primary text-white w-full p-2 hover:bg-red-700">
+          <button
+            className="rounded-lg bg-primary text-white w-full p-2 hover:bg-red-700"
+            onClick={handleToPayment}
+          >
             Continue to Payment
           </button>
         </div>
