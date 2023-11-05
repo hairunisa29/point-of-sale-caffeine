@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { useDispatch, useSelector } from "react-redux";
 import { SyncLoader } from "react-spinners";
 import { GoSearch } from "react-icons/go";
+import Swal from "sweetalert2";
 import { formatCurrency } from "../utils/formatter";
 import ProductCard from "../components/ProductCard";
 import CategoryItem from "../components/CategoryItem";
@@ -26,9 +27,20 @@ function OrderPage() {
 
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
-  const { data, isLoading, error } = useSWR(
+  const { data, isLoading } = useSWR(
     "http://localhost:3000/products",
-    fetchData
+    fetchData,
+    {
+      onError: (error) => {
+        if (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: error?.message,
+          });
+        }
+      },
+    }
   );
 
   const categories = [
@@ -60,6 +72,10 @@ function OrderPage() {
     setSearch(e.target.value);
   };
 
+  const cartTotalPrice = cartItems
+    .map((item) => item.price * item.quantity)
+    .reduce((prevValue, currValue) => prevValue + currValue, 0);
+
   useEffect(() => {
     if (!data) {
       return;
@@ -85,10 +101,6 @@ function OrderPage() {
       setProducts(filteredProducts);
     }
   }, [data, search, selectedCategory]);
-
-  const cartTotalPrice = cartItems
-    .map((item) => item.price * item.quantity)
-    .reduce((prevValue, currValue) => prevValue + currValue, 0);
 
   return (
     <section className="flex">
