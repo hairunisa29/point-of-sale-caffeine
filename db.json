@@ -73,5 +73,40 @@
       "stock": 12
     }
   ],
-  "booking": []
+  "booking": [
+    {
+      "createdAt": "2023-11-07T04:45:06.462Z",
+      "totalPrice": 175000,
+      "products": [
+        {
+          "id": 3,
+          "name": "Espresso",
+          "category": "Coffee",
+          "price": 40000,
+          "img": "/src/assets/images/espresso.jpg",
+          "stock": 3,
+          "quantity": 2
+        },
+        {
+          "id": 7,
+          "name": "Cheesecake",
+          "category": "Pastry",
+          "price": 50000,
+          "img": "/src/assets/images/cheesecake.jpg",
+          "stock": 7,
+          "quantity": 1
+        },
+        {
+          "id": 8,
+          "name": "Cinnamon Roll",
+          "category": "Pastry",
+          "price": 45000,
+          "img": "/src/assets/images/cinnamon-roll.jpg",
+          "stock": 8,
+          "quantity": 1
+        }
+      ],
+      "id": 1
+    }
+  ]
 }

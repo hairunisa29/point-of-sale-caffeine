@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { clearCart } from "../store/reducers/cartSlice";
 import OrderDetailItem from "../components/OrderDetailItem";
 import { formatCurrency } from "../utils/formatter";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +11,7 @@ function PaymentPage() {
   const [paid, setPaid] = useState(null);
   const { cartItems } = useSelector((state) => state.cart);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const cartTotalPrice = cartItems
     .map((item) => item.price * item.quantity)
@@ -33,6 +35,7 @@ function PaymentPage() {
           text: "You have successfully made an order!",
           icon: "success",
         });
+        dispatch(clearCart());
         navigate("/order");
       })
       .catch((error) => {
