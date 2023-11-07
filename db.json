@@ -107,6 +107,22 @@
         }
       ],
       "id": 1
+    },
+    {
+      "createdAt": "2023-11-07T08:07:43.868Z",
+      "totalPrice": 135000,
+      "products": [
+        {
+          "id": 5,
+          "name": "Smoothies",
+          "category": "Non Coffee",
+          "price": 45000,
+          "img": "/src/assets/images/smoothies.jpg",
+          "stock": 2,
+          "quantity": 3
+        }
+      ],
+      "id": 2
     }
   ]
 }
