@@ -2,11 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { sidebarData } from "../data/Static";
 
 function Sidebar() {
-
   const navigate = useNavigate();
 
   const onClickMenu = (url) => {
-
     navigate(url);
   };
 
