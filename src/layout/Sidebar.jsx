@@ -1,13 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { sidebarData } from "../data/Static";
-import { useState } from "react";
 
 function Sidebar() {
-  const [selectedMenu, setSelectedMenu] = useState(0);
+
   const navigate = useNavigate();
 
-  const onClickMenu = (index, url) => {
-    setSelectedMenu(index);
+  const onClickMenu = (url) => {
+
     navigate(url);
   };
 
@@ -20,13 +19,13 @@ function Sidebar() {
       </div>
 
       <ul>
-        {sidebarData.map((menu, index) => (
+        {sidebarData.map((menu) => (
           <li
             key={menu.id}
             className={`h-16 px-6 flex justify-center items-center w-full ${
-              selectedMenu === index ? "text-[#e55644]" : ""
+              window.location.pathname === menu.url ? "text-[#e55644]" : ""
             } hover:bg-gray-100 cursor-pointer`}
-            onClick={() => onClickMenu(index, menu.url)}
+            onClick={() => onClickMenu(menu.url)}
           >
             <menu.icon className="h-5 w-5" />
           </li>
