@@ -15,6 +15,10 @@ function TransactionHistoryPage() {
   const columns = useMemo(
     () => [
       {
+        Header: "No",
+        Cell: (props) => props.cell.row.index + 1,
+      },
+      {
         Header: "Transaction Date",
         accessor: "createdAt",
         Cell: ({ value }) => moment(value).format("l"),
@@ -69,7 +73,7 @@ function TransactionHistoryPage() {
     <section className="p-8">
       <h1 className="text-2xl font-bold mb-4">Transaction History</h1>
 
-      <div className="flex flex-col gap-4 p-4 border-[1px] rounded-lg bg-white shadow-md">
+      <div className="flex flex-col gap-4 border-[1px] rounded-lg bg-white shadow-md">
         {!isLoading ? (
           <Table columns={columns} data={data} />
         ) : (

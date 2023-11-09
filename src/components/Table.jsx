@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { useTable, useSortBy, usePagination } from "react-table";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import { FaSortDown, FaSortUp } from "react-icons/fa";
@@ -24,12 +23,13 @@ function Table({ columns, data }) {
     <>
       <table {...getTableProps()} className="table-fixed">
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
+          {headerGroups.map((headerGroup, idx1) => (
+            <tr {...headerGroup.getHeaderGroupProps()} key={idx1}>
+              {headerGroup.headers.map((column, idx2) => (
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
-                  className="text-left border-b-[1px] pb-4"
+                  key={idx2}
+                  className="text-left border-b-[1px] p-4"
                 >
                   <div className="flex gap-2">
                     {column.render("Header")}
@@ -51,15 +51,16 @@ function Table({ columns, data }) {
         </thead>
 
         <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
+          {page.map((row, idx3) => {
             prepareRow(row);
             return (
               <tr
                 {...row.getRowProps()}
+                key={idx3}
                 className="odd:bg-white even:bg-slate-50 text-sm"
               >
-                {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()} className="py-2">
+                {row.cells.map((cell, idx4) => (
+                  <td {...cell.getCellProps()} key={idx4} className="py-2 px-4">
                     {cell.render("Cell")}
                   </td>
                 ))}
@@ -68,7 +69,7 @@ function Table({ columns, data }) {
           })}
         </tbody>
       </table>
-      <div className="flex gap-2 justify-end">
+      <div className="flex gap-2 pt-1 p-4 justify-end">
         <span className="self-center">
           Page{" "}
           <strong>
