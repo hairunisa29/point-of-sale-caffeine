@@ -4,11 +4,14 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import useSWR from "swr";
 import { HiEye } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 import { formatCurrency } from "../utils/formatter";
 import Table from "../components/Table";
 
 function TransactionHistoryPage() {
+  const navigate = useNavigate();
+
   const columns = useMemo(
     () => [
       {
@@ -29,9 +32,12 @@ function TransactionHistoryPage() {
       {
         Header: "Action",
         disableSortBy: true,
-        Cell: () => {
+        Cell: (props) => {
           return (
-            <button className="rounded-lg bg-primary hover:bg-red-700 text-white w-fit p-2">
+            <button
+              className="rounded-lg bg-primary hover:bg-red-700 text-white w-fit p-2"
+              onClick={() => navigate(`/history/${props.row.values.id}`)}
+            >
               <HiEye />
             </button>
           );

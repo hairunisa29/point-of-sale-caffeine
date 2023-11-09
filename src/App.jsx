@@ -3,6 +3,7 @@ import Layout from "./layout";
 import OrderPage from "./pages/OrderPage";
 import PaymentPage from "./pages/PaymentPage";
 import TransactionHistoryPage from "./pages/TransactionHistoryPage";
+import TransactionDetailPage from "./pages/TransactionDetailPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/order" element={<OrderPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/history" element={<TransactionHistoryPage />} />
+        <Route path="/history/:id" element={<TransactionDetailPage />} />
       </Routes>
     </Layout>
   );
