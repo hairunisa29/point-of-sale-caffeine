@@ -4,7 +4,7 @@ function OrderDetailItem({ image, name, price, qty }) {
   return (
     <div className="grid grid-cols-4 gap-4">
       <div className="col-span-2 flex gap-4">
-        <div className="rounded-lg w-28 h-28">
+        <div className="rounded-lg w-20 h-20">
           <img
             src={image}
             alt={name}
@@ -13,8 +13,8 @@ function OrderDetailItem({ image, name, price, qty }) {
         </div>
 
         <div>
-          <h3 className="font-bold text-lg">{name}</h3>
-          <span className="font-bold text-lg text-primary">
+          <h3 className="font-bold">{name}</h3>
+          <span className="font-bold text-primary">
             {formatCurrency(price)}
           </span>
         </div>
@@ -22,7 +22,7 @@ function OrderDetailItem({ image, name, price, qty }) {
 
       <span>{qty}</span>
 
-      <span className="font-bold text-lg text-primary">
+      <span className="font-bold text-primary">
         {formatCurrency(price * qty)}
       </span>
     </div>
