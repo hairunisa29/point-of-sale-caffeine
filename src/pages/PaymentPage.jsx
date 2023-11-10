@@ -63,7 +63,7 @@ function PaymentPage() {
         </div>
       </div>
 
-      <div className="sticky top-0 h-screen bg-white w-1/4 p-8 pr-4 flex flex-col justify-between">
+      <div className="sticky top-0 h-screen bg-white w-1/4 p-8 flex flex-col justify-between">
         <div className="flex flex-col gap-4">
           <h3 className="text-xl font-bold">Payment</h3>
 
