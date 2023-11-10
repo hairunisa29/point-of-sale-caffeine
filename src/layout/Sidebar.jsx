@@ -21,7 +21,9 @@ function Sidebar() {
           <li
             key={menu.id}
             className={`h-16 px-6 flex justify-center items-center w-full ${
-              window.location.pathname === menu.url ? "text-[#e55644]" : ""
+              window.location.pathname.includes(menu.url)
+                ? "text-[#e55644]"
+                : ""
             } hover:bg-gray-100 cursor-pointer`}
             onClick={() => onClickMenu(menu.url)}
           >
