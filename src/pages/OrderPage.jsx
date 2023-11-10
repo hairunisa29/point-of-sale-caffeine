@@ -100,7 +100,7 @@ function OrderPage() {
   return (
     <section className="flex">
       <div className="w-3/4 p-8">
-        <h1 className="text-2xl font-bold mb-4">Order</h1>
+        <h1 className="text-2xl font-bold mb-6">Order</h1>
 
         {!isLoading ? (
           <>
@@ -150,7 +150,7 @@ function OrderPage() {
 
       <div className="sticky top-0 h-screen bg-white w-1/4 p-8 pr-4 flex flex-col justify-between">
         <div>
-          <h3 className="text-xl font-bold mb-4">Current Order</h3>
+          <h3 className="text-xl font-bold mb-6">Current Order</h3>
 
           <div className="flex flex-col gap-4 max-h-[330px] overflow-y-auto scrollbar">
             {cartItems?.length > 0 ? (
