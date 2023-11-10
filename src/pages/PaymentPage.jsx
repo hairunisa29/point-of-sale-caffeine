@@ -49,7 +49,7 @@ function PaymentPage() {
 
   return (
     <section className="flex flex-row">
-      <div className="w-3/4 bg-gray-100 p-8">
+      <div className="w-3/4 p-8">
         <h1 className="text-2xl font-bold mb-4">Order Details</h1>
         <div className="flex flex-col gap-4">
           {cartItems?.map((item) => (

@@ -103,7 +103,7 @@ function OrderPage() {
 
   return (
     <section className="flex">
-      <div className="w-3/4 bg-gray-100 p-8">
+      <div className="w-3/4 p-8">
         <h1 className="text-2xl font-bold mb-4">Order</h1>
 
         {!isLoading ? (
