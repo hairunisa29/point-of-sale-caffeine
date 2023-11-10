@@ -3,13 +3,13 @@ import { formatCurrency } from "../utils/formatter";
 function ProductCard({ img, name, price, stock, onClickProduct }) {
   return (
     <div
-      className="block rounded-lg p-4 shadow-sm shadow-indigo-100 bg-white hover:shadow-md cursor-pointer"
+      className="block rounded-lg p-4 shadow-indigo-100 bg-white hover:shadow-md cursor-pointer"
       onClick={onClickProduct}
     >
       <img
         alt="Home"
         src={img}
-        className="h-48 w-full rounded-md object-cover"
+        className="h-48 w-full rounded-md object-cover shadow-lg"
       />
 
       <div className="flex flex-col gap-2 mt-3">
