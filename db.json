@@ -123,6 +123,90 @@
         }
       ],
       "id": 2
+    },
+    {
+      "createdAt": "2023-11-10T06:38:25.228Z",
+      "totalPrice": 175000,
+      "products": [
+        {
+          "id": 2,
+          "name": "Latte",
+          "category": "Coffee",
+          "price": 50000,
+          "img": "/src/assets/images/latte.jpg",
+          "stock": 5,
+          "quantity": 1
+        },
+        {
+          "id": 3,
+          "name": "Espresso",
+          "category": "Coffee",
+          "price": 40000,
+          "img": "/src/assets/images/espresso.jpg",
+          "stock": 3,
+          "quantity": 1
+        },
+        {
+          "id": 9,
+          "name": "Croissant",
+          "category": "Pastry",
+          "price": 40000,
+          "img": "/src/assets/images/croissant.jpg",
+          "stock": 12,
+          "quantity": 1
+        },
+        {
+          "id": 8,
+          "name": "Cinnamon Roll",
+          "category": "Pastry",
+          "price": 45000,
+          "img": "/src/assets/images/cinnamon-roll.jpg",
+          "stock": 8,
+          "quantity": 1
+        }
+      ],
+      "id": 3
+    },
+    {
+      "createdAt": "2023-11-10T07:11:51.319Z",
+      "totalPrice": 40000,
+      "products": [
+        {
+          "id": 1,
+          "name": "Americano",
+          "category": "Coffee",
+          "price": 40000,
+          "img": "/src/assets/images/iced-americano.jpg",
+          "stock": 5,
+          "quantity": 1
+        }
+      ],
+      "id": 4
+    },
+    {
+      "createdAt": "2023-11-10T07:14:33.738Z",
+      "totalPrice": 90000,
+      "products": [
+        {
+          "id": 2,
+          "name": "Latte",
+          "category": "Coffee",
+          "price": 50000,
+          "img": "/src/assets/images/latte.jpg",
+          "stock": 5,
+          "quantity": 1
+        },
+        {
+          "id": 3,
+          "name": "Espresso",
+          "category": "Coffee",
+          "price": 40000,
+          "img": "/src/assets/images/espresso.jpg",
+          "stock": 3,
+          "quantity": 1
+        }
+      ],
+      "id": 5
     }
   ]
 }

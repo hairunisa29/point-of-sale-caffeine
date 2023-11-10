@@ -34,9 +34,12 @@ function PaymentPage() {
           title: "Payment Succeed",
           text: "You have successfully made an order!",
           icon: "success",
+        }).then((result) => {
+          if (result.isConfirmed || result.isDismissed) {
+            dispatch(clearCart());
+            navigate("/order");
+          }
         });
-        dispatch(clearCart());
-        navigate("/order");
       })
       .catch((error) => {
         Swal.fire({
