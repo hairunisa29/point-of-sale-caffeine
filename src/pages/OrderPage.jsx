@@ -152,7 +152,7 @@ function OrderPage() {
         <div>
           <h3 className="text-xl font-bold mb-4">Current Order</h3>
 
-          <div className="flex flex-col gap-4 max-h-[280px] overflow-y-auto scrollbar">
+          <div className="flex flex-col gap-4 max-h-[330px] overflow-y-auto scrollbar">
             {cartItems?.length > 0 ? (
               cartItems?.map((item) => (
                 <CartItem
