@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 import { GoSearch } from "react-icons/go";
-import Swal from "sweetalert2";
 import { formatCurrency } from "../utils/formatter";
 import ProductCard from "../components/ProductCard";
 import CategoryItem from "../components/CategoryItem";
@@ -16,6 +15,7 @@ import {
 } from "../store/reducers/cartSlice";
 import CartItem from "../components/CartItem";
 import { useEffect, useState } from "react";
+import { PopUpAlert } from "../utils/alert";
 
 function OrderPage() {
   const [products, setProducts] = useState([]);
@@ -35,11 +35,7 @@ function OrderPage() {
     {
       onError: (error) => {
         if (error) {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: error?.message,
-          });
+          PopUpAlert("Error", error?.message, "error");
         }
       },
     }

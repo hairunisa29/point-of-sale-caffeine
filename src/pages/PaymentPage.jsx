@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import Swal from "sweetalert2";
 import { clearCart } from "../store/reducers/cartSlice";
 import OrderDetailItem from "../components/OrderDetailItem";
 import { formatCurrency } from "../utils/formatter";
 import { useNavigate } from "react-router-dom";
+import { PopUpAlert } from "../utils/alert";
 
 function PaymentPage() {
   const [paid, setPaid] = useState(null);
@@ -30,11 +30,11 @@ function PaymentPage() {
     axios
       .post("http://localhost:3000/booking", payload)
       .then(() => {
-        Swal.fire({
-          title: "Payment Succeed",
-          text: "You have successfully made an order!",
-          icon: "success",
-        }).then((result) => {
+        PopUpAlert(
+          "Payment Succeed",
+          "You have successfully made an order!",
+          "success"
+        ).then((result) => {
           if (result.isConfirmed || result.isDismissed) {
             dispatch(clearCart());
             navigate("/order");
@@ -42,11 +42,7 @@ function PaymentPage() {
         });
       })
       .catch((error) => {
-        Swal.fire({
-          title: "Payment Failed",
-          text: error?.message,
-          icon: "error",
-        });
+        PopUpAlert("Payment Failed", error?.message, "error");
       });
   };
 

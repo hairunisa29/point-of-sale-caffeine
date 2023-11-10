@@ -1,13 +1,13 @@
 import { useMemo } from "react";
 import axios from "axios";
 import moment from "moment";
-import Swal from "sweetalert2";
 import useSWR from "swr";
 import { HiEye } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 import { formatCurrency } from "../utils/formatter";
 import Table from "../components/Table";
+import { PopUpAlert } from "../utils/alert";
 
 function TransactionHistoryPage() {
   const navigate = useNavigate();
@@ -59,11 +59,7 @@ function TransactionHistoryPage() {
     {
       onError: (error) => {
         if (error) {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: error?.message,
-          });
+          PopUpAlert("Error", error?.message, "error");
         }
       },
     }
