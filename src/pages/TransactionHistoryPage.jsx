@@ -19,12 +19,12 @@ function TransactionHistoryPage() {
         Cell: (props) => props.cell.row.index + 1,
       },
       {
-        Header: "Transaction Date",
+        Header: "Order Date",
         accessor: "createdAt",
-        Cell: ({ value }) => moment(value).format("l"),
+        Cell: ({ value }) => moment(value).format("ll"),
       },
       {
-        Header: "Transaction ID",
+        Header: "Order ID",
         accessor: "id",
         disableSortBy: true,
       },
