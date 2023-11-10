@@ -22,7 +22,7 @@ function Sidebar() {
             key={menu.id}
             className={`h-16 px-6 flex justify-center items-center w-full ${
               window.location.pathname.includes(menu.url)
-                ? "text-[#e55644]"
+                ? "text-primary"
                 : ""
             } hover:bg-gray-100 cursor-pointer`}
             onClick={() => onClickMenu(menu.url)}

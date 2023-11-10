@@ -99,7 +99,7 @@ function PaymentPage() {
 
         <button
           className={`rounded-lg ${
-            paid < cartTotalPrice ? "bg-red-300" : "bg-primary hover:bg-red-700"
+            paid < cartTotalPrice ? "bg-blue-300" : "bg-primary hover:bg-blue-700"
           } text-white w-full p-2`}
           onClick={handleFinishPayment}
           disabled={paid < cartTotalPrice}

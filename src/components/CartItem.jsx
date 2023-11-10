@@ -31,7 +31,7 @@ function CartItem({
           <div className="flex self-center justify-between gap-3">
             <button
               className={`${
-                qty === 1 ? "bg-red-300" : "bg-primary"
+                qty === 1 ? "bg-blue-300" : "bg-primary"
               } h-full w-5 rounded text-sm text-white`}
               disabled={qty === 1}
               onClick={handleDecrement}

@@ -144,7 +144,7 @@ function OrderPage() {
             </div>
           </>
         ) : (
-          <SyncLoader color="#e55644" />
+          <SyncLoader color="#2457ca" />
         )}
       </div>
 
@@ -183,8 +183,8 @@ function OrderPage() {
           <button
             className={`rounded-lg ${
               cartItems?.length === 0
-                ? "bg-red-300"
-                : "bg-primary hover:bg-red-700"
+                ? "bg-blue-300"
+                : "bg-primary hover:bg-blue-700"
             } text-white w-full p-2 `}
             onClick={handleToPayment}
             disabled={cartItems?.length === 0}

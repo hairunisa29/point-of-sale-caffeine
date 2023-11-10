@@ -7,7 +7,7 @@ export default {
         body: ["'Roboto'"],
       },
       colors: {
-        primary: "#e55644",
+        primary: "#2457ca",
       },
     },
   },

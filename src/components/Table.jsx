@@ -78,7 +78,7 @@ function Table({ columns, data }) {
         </span>
         <button
           className={`rounded-lg ${
-            !canPreviousPage ? "bg-red-300" : "bg-primary hover:bg-red-700"
+            !canPreviousPage ? "bg-blue-300" : "bg-primary hover:bg-blue-700"
           } text-white text-sm w-fit p-2`}
           onClick={previousPage}
           disabled={!canPreviousPage}
@@ -87,7 +87,7 @@ function Table({ columns, data }) {
         </button>
         <button
           className={`rounded-lg ${
-            !canNextPage ? "bg-red-300" : "bg-primary hover:bg-red-700"
+            !canNextPage ? "bg-blue-300" : "bg-primary hover:bg-blue-700"
           } text-white text-sm w-fit p-2`}
           onClick={nextPage}
           disabled={!canNextPage}

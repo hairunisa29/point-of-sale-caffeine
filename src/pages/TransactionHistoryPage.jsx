@@ -39,7 +39,7 @@ function TransactionHistoryPage() {
         Cell: (props) => {
           return (
             <button
-              className="rounded-lg bg-primary hover:bg-red-700 text-white w-fit p-2"
+              className="rounded-lg bg-primary hover:bg-blue-700 text-white w-fit p-2"
               onClick={() => navigate(`/history/${props.row.values.id}`)}
             >
               <HiEye />
@@ -73,7 +73,7 @@ function TransactionHistoryPage() {
         {!isLoading ? (
           <Table columns={columns} data={data} />
         ) : (
-          <SyncLoader color="#e55644" />
+          <SyncLoader color="#2457ca" />
         )}
       </div>
     </section>

@@ -5,6 +5,6 @@ export const PopUpAlert = (title, text, icon) => {
     title,
     text,
     icon,
-    confirmButtonColor: "#e55644",
+    confirmButtonColor: "#2457ca",
   });
 };

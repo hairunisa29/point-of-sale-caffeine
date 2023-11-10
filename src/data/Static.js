@@ -1,9 +1,10 @@
-import { GoHome, GoChecklist } from "react-icons/go";
+import { GoChecklist } from "react-icons/go";
+import { RxDashboard } from "react-icons/rx";
 
 export const sidebarData = [
   {
     id: 1,
-    icon: GoHome,
+    icon: RxDashboard,
     title: "Order",
     url: "/order",
   },
