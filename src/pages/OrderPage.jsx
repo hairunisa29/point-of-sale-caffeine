@@ -185,8 +185,13 @@ function OrderPage() {
           </div>
 
           <button
-            className="rounded-lg bg-primary text-white w-full p-2 hover:bg-red-700"
+            className={`rounded-lg ${
+              cartItems?.length === 0
+                ? "bg-red-300"
+                : "bg-primary hover:bg-red-700"
+            } text-white w-full p-2 `}
             onClick={handleToPayment}
+            disabled={cartItems?.length === 0}
           >
             Continue to Payment
           </button>
