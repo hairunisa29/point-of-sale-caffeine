@@ -100,34 +100,34 @@ function OrderPage() {
   return (
     <section className="flex">
       <div className="w-3/4 p-8">
-        <h1 className="text-2xl font-bold mb-6">Order</h1>
+        <div className="flex justify-between">
+          <h1 className="text-2xl font-bold mb-6">Order</h1>
+
+          <div className="relative">
+            <input
+              type="text"
+              id="Search"
+              placeholder="Search product..."
+              className="w-64 rounded-md border-gray-200 p-3 shadow-sm sm:text-sm"
+              value={search}
+              onChange={handleSearch}
+            />
+
+            <GoSearch className="text-base absolute inset-y-3 end-3" />
+          </div>
+        </div>
 
         {!isLoading ? (
           <>
-            <div className="flex justify-between">
-              <div className="flex gap-4 mb-4">
-                {categories?.map((category, index) => (
-                  <CategoryItem
-                    key={index}
-                    category={category}
-                    selectedCategory={selectedCategory}
-                    handleFilterCategory={() => handleFilterCategory(category)}
-                  />
-                ))}
-              </div>
-
-              <div className="relative">
-                <input
-                  type="text"
-                  id="Search"
-                  placeholder="Search product..."
-                  className="w-64 rounded-md border-gray-200 p-3 shadow-sm sm:text-sm"
-                  value={search}
-                  onChange={handleSearch}
+            <div className="flex gap-4 mb-4">
+              {categories?.map((category, index) => (
+                <CategoryItem
+                  key={index}
+                  category={category}
+                  selectedCategory={selectedCategory}
+                  handleFilterCategory={() => handleFilterCategory(category)}
                 />
-
-                <GoSearch className="text-base absolute inset-y-3 end-3" />
-              </div>
+              ))}
             </div>
 
             <div className="grid grid-cols-3 gap-4">
@@ -185,7 +185,7 @@ function OrderPage() {
               cartItems?.length === 0
                 ? "bg-blue-300"
                 : "bg-primary hover:bg-blue-700"
-            } text-white w-full p-2 `}
+            } text-white text-sm font-bold w-full p-2 `}
             onClick={handleToPayment}
             disabled={cartItems?.length === 0}
           >
