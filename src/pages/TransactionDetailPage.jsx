@@ -26,7 +26,7 @@ function TransactionDetailPage() {
 
       <div className="rounded-lg bg-white p-4">
         <h3 className="font-bold">Order ID #{data?.id}</h3>
-        <h3>{moment(data?.createdAt).format("LLL")}</h3>
+        <h3 className="text-sm">{moment(data?.createdAt).format("LLL")}</h3>
 
         <h3 className="font-bold my-4">Products</h3>
 
@@ -46,6 +46,7 @@ function TransactionDetailPage() {
               name={product.name}
               price={product.price}
               qty={product.quantity}
+              page="history"
             />
           ))}
         </div>

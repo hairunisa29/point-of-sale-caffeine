@@ -75,9 +75,19 @@
   ],
   "booking": [
     {
-      "createdAt": "2023-11-07T04:45:06.462Z",
-      "totalPrice": 175000,
+      "createdAt": "2023-11-10T15:38:51.620Z",
+      "totalPrice": 90000,
+      "paymentMethod": "Debit Card",
       "products": [
+        {
+          "id": 2,
+          "name": "Latte",
+          "category": "Coffee",
+          "price": 50000,
+          "img": "/src/assets/images/latte.jpg",
+          "stock": 5,
+          "quantity": 1
+        },
         {
           "id": 3,
           "name": "Espresso",
@@ -85,33 +95,25 @@
           "price": 40000,
           "img": "/src/assets/images/espresso.jpg",
           "stock": 3,
-          "quantity": 2
-        },
-        {
-          "id": 7,
-          "name": "Cheesecake",
-          "category": "Pastry",
-          "price": 50000,
-          "img": "/src/assets/images/cheesecake.jpg",
-          "stock": 7,
-          "quantity": 1
-        },
-        {
-          "id": 8,
-          "name": "Cinnamon Roll",
-          "category": "Pastry",
-          "price": 45000,
-          "img": "/src/assets/images/cinnamon-roll.jpg",
-          "stock": 8,
           "quantity": 1
         }
       ],
       "id": 1
     },
     {
-      "createdAt": "2023-11-07T08:07:43.868Z",
-      "totalPrice": 135000,
+      "createdAt": "2023-11-10T15:41:05.519Z",
+      "totalPrice": 150000,
+      "paymentMethod": "E-Wallet",
       "products": [
+        {
+          "id": 2,
+          "name": "Latte",
+          "category": "Coffee",
+          "price": 50000,
+          "img": "/src/assets/images/latte.jpg",
+          "stock": 5,
+          "quantity": 1
+        },
         {
           "id": 5,
           "name": "Smoothies",
@@ -119,135 +121,19 @@
           "price": 45000,
           "img": "/src/assets/images/smoothies.jpg",
           "stock": 2,
-          "quantity": 3
+          "quantity": 1
+        },
+        {
+          "id": 4,
+          "name": "Caramel Machiato",
+          "category": "Coffee",
+          "price": 55000,
+          "img": "/src/assets/images/caramel-machiato.jpg",
+          "stock": 3,
+          "quantity": 1
         }
       ],
       "id": 2
-    },
-    {
-      "createdAt": "2023-11-10T06:38:25.228Z",
-      "totalPrice": 175000,
-      "products": [
-        {
-          "id": 2,
-          "name": "Latte",
-          "category": "Coffee",
-          "price": 50000,
-          "img": "/src/assets/images/latte.jpg",
-          "stock": 5,
-          "quantity": 1
-        },
-        {
-          "id": 3,
-          "name": "Espresso",
-          "category": "Coffee",
-          "price": 40000,
-          "img": "/src/assets/images/espresso.jpg",
-          "stock": 3,
-          "quantity": 1
-        },
-        {
-          "id": 9,
-          "name": "Croissant",
-          "category": "Pastry",
-          "price": 40000,
-          "img": "/src/assets/images/croissant.jpg",
-          "stock": 12,
-          "quantity": 1
-        },
-        {
-          "id": 8,
-          "name": "Cinnamon Roll",
-          "category": "Pastry",
-          "price": 45000,
-          "img": "/src/assets/images/cinnamon-roll.jpg",
-          "stock": 8,
-          "quantity": 1
-        }
-      ],
-      "id": 3
-    },
-    {
-      "createdAt": "2023-11-10T07:11:51.319Z",
-      "totalPrice": 40000,
-      "products": [
-        {
-          "id": 1,
-          "name": "Americano",
-          "category": "Coffee",
-          "price": 40000,
-          "img": "/src/assets/images/iced-americano.jpg",
-          "stock": 5,
-          "quantity": 1
-        }
-      ],
-      "id": 4
-    },
-    {
-      "createdAt": "2023-11-10T07:14:33.738Z",
-      "totalPrice": 90000,
-      "products": [
-        {
-          "id": 2,
-          "name": "Latte",
-          "category": "Coffee",
-          "price": 50000,
-          "img": "/src/assets/images/latte.jpg",
-          "stock": 5,
-          "quantity": 1
-        },
-        {
-          "id": 3,
-          "name": "Espresso",
-          "category": "Coffee",
-          "price": 40000,
-          "img": "/src/assets/images/espresso.jpg",
-          "stock": 3,
-          "quantity": 1
-        }
-      ],
-      "id": 5
-    },
-    {
-      "createdAt": "2023-11-10T07:19:30.087Z",
-      "totalPrice": 100000,
-      "products": [
-        {
-          "id": 2,
-          "name": "Latte",
-          "category": "Coffee",
-          "price": 50000,
-          "img": "/src/assets/images/latte.jpg",
-          "stock": 5,
-          "quantity": 1
-        },
-        {
-          "id": 6,
-          "name": "Strawberry Milkshake",
-          "category": "Non Coffee",
-          "price": 50000,
-          "img": "/src/assets/images/strawberry-milkshake.jpg",
-          "stock": 5,
-          "quantity": 1
-        }
-      ],
-      "id": 6
-    },
-    {
-      "createdAt": "2023-11-10T07:25:36.829Z",
-      "totalPrice": 50000,
-      "products": [
-        {
-          "id": 2,
-          "name": "Latte",
-          "category": "Coffee",
-          "price": 50000,
-          "img": "/src/assets/images/latte.jpg",
-          "stock": 5,
-          "quantity": 1
-        }
-      ],
-      "id": 7
     }
   ]
 }
