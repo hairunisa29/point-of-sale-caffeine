@@ -1,8 +1,12 @@
 import { formatCurrency } from "../utils/formatter";
 
-function OrderDetailItem({ image, name, price, qty }) {
+function OrderDetailItem({ image, name, price, qty, page }) {
   return (
-    <div className="grid grid-cols-4 gap-4 bg-white rounded-lg p-4">
+    <div
+      className={`grid grid-cols-4 gap-4 ${
+        page === "history" ? "" : "bg-white rounded-lg p-4"
+      }`}
+    >
       <div className="col-span-2 flex gap-4">
         <div className="rounded-lg w-20 h-20">
           <img
