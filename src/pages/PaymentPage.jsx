@@ -49,7 +49,7 @@ function PaymentPage() {
   return (
     <section className="flex flex-row">
       <div className="w-3/4 p-8">
-        <h1 className="text-2xl font-bold mb-4">Order Details</h1>
+        <h1 className="text-2xl font-bold mb-6">Order Details</h1>
         <div className="flex flex-col gap-4">
           {cartItems?.map((item) => (
             <OrderDetailItem
@@ -68,14 +68,14 @@ function PaymentPage() {
           <h3 className="text-xl font-bold">Payment</h3>
 
           <div className="flex justify-between">
-            <span className="text-lg">Total</span>
+            <span>Total</span>
             <span className="font-bold text-lg">
               {formatCurrency(cartTotalPrice)}
             </span>
           </div>
 
           <div>
-            <label htmlFor="paid" className="text-lg">
+            <label htmlFor="paid">
               Paid
             </label>
             <input
@@ -88,7 +88,7 @@ function PaymentPage() {
           </div>
 
           <div className="flex justify-between">
-            <span className="text-lg">Changes</span>
+            <span>Changes</span>
             <span className="font-bold text-lg">
               {paid - cartTotalPrice > 0
                 ? formatCurrency(paid - cartTotalPrice)
@@ -100,7 +100,7 @@ function PaymentPage() {
         <button
           className={`rounded-lg ${
             paid < cartTotalPrice ? "bg-blue-300" : "bg-primary hover:bg-blue-700"
-          } text-white w-full p-2`}
+          } text-white text-sm font-bold w-full p-2`}
           onClick={handleFinishPayment}
           disabled={paid < cartTotalPrice}
         >
