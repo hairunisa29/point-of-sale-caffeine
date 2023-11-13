@@ -66,16 +66,16 @@ function TransactionHistoryPage() {
   );
 
   return (
-    <section className="p-8">
+    <section className="flex flex-col p-8">
       <h1 className="text-2xl font-bold mb-4">Transaction History</h1>
 
-      <div className="flex flex-col gap-4 border-[1px] rounded-lg bg-white shadow-md">
-        {!isLoading ? (
+      {!isLoading ? (
+        <div className="flex flex-col gap-4 border-[1px] rounded-lg bg-white shadow-md">
           <Table columns={columns} data={data} />
-        ) : (
-          <SyncLoader color="#2457ca" />
-        )}
-      </div>
+        </div>
+      ) : (
+        <SyncLoader color="#2457ca" />
+      )}
     </section>
   );
 }
