@@ -1,7 +1,7 @@
 import { GoChecklist } from "react-icons/go";
 import { RxDashboard } from "react-icons/rx";
 import { BsCashCoin } from "react-icons/bs";
-import { BiCreditCard, BiWallet } from "react-icons/bi";
+import { BiCreditCard, BiWallet, BiFoodMenu } from "react-icons/bi";
 
 export const sidebarData = [
   {
@@ -15,6 +15,12 @@ export const sidebarData = [
     icon: GoChecklist,
     title: "History",
     url: "/history",
+  },
+  {
+    id: 3,
+    icon: BiFoodMenu,
+    title: "Menu",
+    url: "/menu",
   },
 ];
 
