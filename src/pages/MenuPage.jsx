@@ -1,9 +1,11 @@
 import { useMemo } from "react";
+import { SyncLoader } from "react-spinners";
+import { BiEditAlt } from "react-icons/bi";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import useSWR from "swr";
 import Table from "../components/Table";
 import { formatCurrency } from "../utils/formatter";
 import { PopUpAlert } from "../utils/alert";
-import useSWR from "swr";
-import { SyncLoader } from "react-spinners";
 
 function MenuPage() {
   const columns = useMemo(
@@ -33,6 +35,29 @@ function MenuPage() {
       {
         Header: "Stock",
         accessor: "stock",
+      },
+      {
+        Header: "Action",
+        disableSortBy: true,
+        Cell: (props) => {
+          return (
+            <div className="flex">
+              <button
+                className="rounded-lg bg-yellow-500 hover:bg-yellow-700 text-white w-fit p-2"
+                // onClick={() => navigate(`/history/${props.row.values.id}`)}
+              >
+                <BiEditAlt />
+              </button>
+
+              <button
+                className="rounded-lg bg-red-500 hover:bg-red-700 text-white w-fit p-2"
+                // onClick={() => navigate(`/history/${props.row.values.id}`)}
+              >
+                <RiDeleteBin5Line />
+              </button>
+            </div>
+          );
+        },
       },
     ],
     []
