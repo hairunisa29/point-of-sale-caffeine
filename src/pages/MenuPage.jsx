@@ -83,6 +83,10 @@ function MenuPage() {
 
       {!isLoading ? (
         <div className="flex flex-col gap-4 border-[1px] rounded-lg bg-white shadow-md">
+          <button className="justify-end rounded-lg bg-primary hover:bg-blue-700 text-white text-sm font-bold w-full p-2">
+            Add New Menu
+          </button>
+
           <Table columns={columns} data={data} />
         </div>
       ) : (
