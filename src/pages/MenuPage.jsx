@@ -1,9 +1,12 @@
 import { useMemo, useState } from "react";
 import axios from "axios";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { SyncLoader } from "react-spinners";
 import { BiEditAlt } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import useSWR from "swr";
+import * as yup from "yup";
 import Modal from "../components/Modal";
 import Table from "../components/Table";
 import { PopUpAlert } from "../utils/alert";
@@ -11,6 +14,23 @@ import { formatCurrency } from "../utils/formatter";
 
 function MenuPage() {
   const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+
+  const schema = yup.object().shape({
+    productName: yup.string("Product Name is required"),
+    category: yup.string().required("Category is required"),
+    price: yup.string().required("Price is required"),
+    stock: yup.string().required("Stock is required"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const columns = useMemo(
     () => [
@@ -69,7 +89,7 @@ function MenuPage() {
 
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
-  const { data, isLoading } = useSWR(
+  const { data: dataProducts, isLoading } = useSWR(
     "http://localhost:3000/products",
     fetchData,
     {
@@ -83,20 +103,34 @@ function MenuPage() {
 
   const handleModalAdd = () => {
     setShowModal(true);
+    setModalTitle("Add New Item");
   };
 
-  const handleModalEdit = (id) => {};
+  const handleModalEdit = (id) => {
+    setShowModal(true);
+    setModalTitle("Edit Item");
+  };
 
   const handleDelete = (id) => {};
 
+  const onSubmitModal = (data) => {};
+
   return (
     <section className="flex flex-col p-8">
-      <h1 className="text-2xl font-bold mb-4">Menu</h1>
+      <h1 className="mb-4 text-2xl font-bold">Menu</h1>
 
-      {showModal && <Modal />}
+      {showModal && (
+        <Modal
+          title={modalTitle}
+          handleSubmit={handleSubmit}
+          register={register}
+          onSubmitModal={onSubmitModal}
+          errors={errors}
+        />
+      )}
 
       <button
-        className="ml-auto mb-4 rounded-lg bg-primary hover:bg-blue-700 text-white text-sm font-bold w-fit p-2"
+        className="ml-auto mb-4 w-fit p-2 rounded-lg bg-primary hover:bg-blue-700 text-white text-sm font-bold"
         onClick={handleModalAdd}
       >
         Add New Menu
@@ -104,7 +138,7 @@ function MenuPage() {
 
       {!isLoading ? (
         <div className="flex flex-col gap-4 border-[1px] rounded-lg bg-white shadow-md">
-          <Table columns={columns} data={data} />
+          <Table columns={columns} data={dataProducts} />
         </div>
       ) : (
         <SyncLoader color="#2457ca" />
