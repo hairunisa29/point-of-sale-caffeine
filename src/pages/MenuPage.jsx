@@ -11,6 +11,7 @@ import { formatCurrency } from "../utils/formatter";
 
 function MenuPage() {
   const [showModal, setShowModal] = useState(false);
+
   const columns = useMemo(
     () => [
       {
@@ -47,14 +48,14 @@ function MenuPage() {
             <div className="flex gap-4">
               <button
                 className="rounded-lg bg-yellow-500 hover:bg-yellow-700 text-white w-fit p-2"
-                onClick={handleModalEdit(props.row.values.id)}
+                onClick={() => handleModalEdit(props.row.values.id)}
               >
                 <BiEditAlt />
               </button>
 
               <button
                 className="rounded-lg bg-red-500 hover:bg-red-700 text-white w-fit p-2"
-                // onClick={() => navigate(`/history/${props.row.values.id}`)}
+                onClick={() => handleDelete(props.row.values.id)}
               >
                 <RiDeleteBin5Line />
               </button>
@@ -86,7 +87,7 @@ function MenuPage() {
 
   const handleModalEdit = (id) => {};
 
-  const handleDelete = () => {};
+  const handleDelete = (id) => {};
 
   return (
     <section className="flex flex-col p-8">
