@@ -22,7 +22,7 @@ function PaymentPage() {
   const handleInputPaid = (e) => {
     setPaid(e.target.value);
   };
-  console.log(paymentMethod === "");
+
   const handleFinishPayment = () => {
     const payload = {
       createdAt: new Date(),
@@ -52,7 +52,7 @@ function PaymentPage() {
   return (
     <section className="flex flex-row">
       <div className="w-3/4 p-8">
-        <h1 className="text-2xl font-bold mb-6">Order Details</h1>
+        <h1 className="mb-6 text-2xl font-bold">Order Details</h1>
         <div className="flex flex-col gap-4">
           {cartItems?.map((item) => (
             <OrderDetailItem
@@ -67,7 +67,7 @@ function PaymentPage() {
         </div>
       </div>
 
-      <div className="sticky top-0 h-screen bg-white w-1/4 p-8 flex flex-col justify-between">
+      <div className="sticky flex flex-col justify-between w-1/4 p-8 top-0 h-screen bg-white">
         <div className="flex flex-col gap-4">
           <h3 className="text-xl font-bold">Payment</h3>
 
@@ -83,7 +83,7 @@ function PaymentPage() {
             <input
               id="paid"
               placeholder="Rp 0"
-              className="w-full rounded-md border-[1px] border-gray-200 p-3 shadow-sm sm:text-sm"
+              className="w-full p-3 border-[1px] border-gray-200 rounded-md shadow-sm sm:text-sm"
               value={paid}
               onChange={handleInputPaid}
             />
@@ -99,19 +99,19 @@ function PaymentPage() {
           </div>
 
           <div>
-            <h4 className="font-bold mb-2">Payment Method</h4>
+            <h4 className="mb-2 font-bold">Payment Method</h4>
             <div className="flex justify-between">
               {paymentMethods.map((item) => (
                 <div key={item.id} className="flex flex-col gap-1">
                   <div
-                    className={`rounded-lg px-6 py-4 border-[1px] ${
+                    className={`px-6 py-4 rounded-lg border-[1px] ${
                       paymentMethod === item.method ? "border-primary" : ""
                     } cursor-pointer hover:border-primary`}
                     onClick={() => setPaymentMethod(item.method)}
                   >
                     <item.icon className="text-2xl text-primary" />
                   </div>
-                  <span className="text-sm font-bold self-center">
+                  <span className="self-center text-sm font-bold">
                     {item.method}
                   </span>
                 </div>
@@ -121,11 +121,11 @@ function PaymentPage() {
         </div>
 
         <button
-          className={`rounded-lg ${
+          className={`w-full p-2 rounded-lg ${
             paid < cartTotalPrice || paymentMethod === ""
               ? "bg-blue-300"
               : "bg-primary hover:bg-blue-700"
-          } text-white text-sm font-bold w-full p-2`}
+          } text-white text-sm font-bold`}
           onClick={handleFinishPayment}
           disabled={paid < cartTotalPrice || paymentMethod === ""}
         >

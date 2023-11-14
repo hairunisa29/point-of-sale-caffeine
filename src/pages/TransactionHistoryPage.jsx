@@ -39,7 +39,7 @@ function TransactionHistoryPage() {
         Cell: (props) => {
           return (
             <button
-              className="rounded-lg bg-primary hover:bg-blue-700 text-white w-fit p-2"
+              className="w-fit p-2 rounded-lg bg-primary hover:bg-blue-700 text-white"
               onClick={() => navigate(`/history/${props.row.values.id}`)}
             >
               <HiEye />
@@ -67,7 +67,7 @@ function TransactionHistoryPage() {
 
   return (
     <section className="flex flex-col p-8">
-      <h1 className="text-2xl font-bold mb-4">Transaction History</h1>
+      <h1 className="mb-4 text-2xl font-bold">Transaction History</h1>
 
       {!isLoading ? (
         <div className="flex flex-col gap-4 border-[1px] rounded-lg bg-white shadow-md">

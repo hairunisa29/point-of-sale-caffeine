@@ -101,25 +101,25 @@ function OrderPage() {
     <section className="flex">
       <div className="w-3/4 p-8">
         <div className="flex justify-between">
-          <h1 className="text-2xl font-bold mb-6">Order</h1>
+          <h1 className="mb-6 text-2xl font-bold">Order</h1>
 
           <div className="relative">
             <input
               type="text"
               id="Search"
               placeholder="Search product..."
-              className="w-64 rounded-md border-gray-200 p-3 shadow-sm sm:text-sm"
+              className="w-64 p-3 border-gray-200 rounded-md shadow-sm sm:text-sm"
               value={search}
               onChange={handleSearch}
             />
 
-            <GoSearch className="text-base absolute inset-y-3 end-3" />
+            <GoSearch className="absolute inset-y-3 end-3 text-base" />
           </div>
         </div>
 
         {!isLoading ? (
           <>
-            <div className="flex gap-4 mb-4">
+            <div className="flex mb-4 gap-4">
               {categories?.map((category, index) => (
                 <CategoryItem
                   key={index}
@@ -148,11 +148,11 @@ function OrderPage() {
         )}
       </div>
 
-      <div className="sticky top-0 h-screen bg-white w-1/4 p-8 pr-4 flex flex-col justify-between">
+      <div className="sticky flex flex-col justify-between w-1/4 p-8 pr-4 top-0 h-screen bg-white">
         <div>
-          <h3 className="text-xl font-bold mb-6">Current Order</h3>
+          <h3 className="mb-6 text-xl font-bold">Current Order</h3>
 
-          <div className="flex flex-col gap-4 max-h-[330px] overflow-y-auto scrollbar">
+          <div className="flex flex-col max-h-[330px] gap-4 overflow-y-auto scrollbar">
             {cartItems?.length > 0 ? (
               cartItems?.map((item) => (
                 <CartItem
@@ -181,11 +181,11 @@ function OrderPage() {
           </div>
 
           <button
-            className={`rounded-lg ${
+            className={`w-full p-2 rounded-lg ${
               cartItems?.length === 0
                 ? "bg-blue-300"
                 : "bg-primary hover:bg-blue-700"
-            } text-white text-sm font-bold w-full p-2 `}
+            } text-white text-sm font-bold`}
             onClick={handleToPayment}
             disabled={cartItems?.length === 0}
           >

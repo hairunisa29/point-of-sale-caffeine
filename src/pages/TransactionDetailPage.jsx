@@ -24,13 +24,13 @@ function TransactionDetailPage() {
         <h1 className="text-2xl font-bold">Transaction Detail</h1>
       </div>
 
-      <div className="rounded-lg bg-white p-4">
+      <div className="p-4 rounded-lg bg-white">
         <h3 className="font-bold">Order ID #{data?.id}</h3>
         <h3 className="text-sm">{moment(data?.createdAt).format("LLL")}</h3>
 
-        <h3 className="font-bold my-4">Products</h3>
+        <h3 className="my-4 font-bold">Products</h3>
 
-        <div className="grid grid-cols-4 gap-4 font-bold mb-2">
+        <div className="grid grid-cols-4 mb-2 gap-4 font-bold">
           <div className="col-span-2">
             <span>Product Name</span>
           </div>
@@ -38,7 +38,7 @@ function TransactionDetailPage() {
           <span>Total Price</span>
         </div>
 
-        <div className="flex flex-col gap-4 mb-4">
+        <div className="flex flex-col mb-4 gap-4">
           {data?.products.map((product) => (
             <OrderDetailItem
               key={product.id}
