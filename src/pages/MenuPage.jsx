@@ -102,12 +102,10 @@ function MenuPage() {
   );
 
   const handleModalAdd = () => {
-    setShowModal(true);
     setModalTitle("Add New Item");
   };
 
   const handleModalEdit = (id) => {
-    setShowModal(true);
     setModalTitle("Edit Item");
   };
 
@@ -126,6 +124,8 @@ function MenuPage() {
           register={register}
           onSubmitModal={onSubmitModal}
           errors={errors}
+          open={showModal}
+          handleShow={() => setShowModal(!showModal)}
         />
       )}
 
