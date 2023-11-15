@@ -17,7 +17,7 @@ function MenuPage() {
   const [modalTitle, setModalTitle] = useState("");
 
   const schema = yup.object().shape({
-    productName: yup.string("Product Name is required"),
+    productName: yup.string().required("Product Name is required"),
     category: yup.string().required("Category is required"),
     price: yup.string().required("Price is required"),
     stock: yup.string().required("Stock is required"),
@@ -103,6 +103,7 @@ function MenuPage() {
 
   const handleModalAdd = () => {
     setModalTitle("Add New Item");
+    setShowModal(true);
   };
 
   const handleModalEdit = (id) => {
@@ -111,7 +112,9 @@ function MenuPage() {
 
   const handleDelete = (id) => {};
 
-  const onSubmitModal = (data) => {};
+  const onSubmitModal = (data) => {
+    console.log(data);
+  };
 
   return (
     <section className="flex flex-col p-8">
