@@ -28,3 +28,9 @@
     background: #555;
   }
 }
+
+@layer components {
+  .error {
+    @apply text-xs text-red-500;
+  }
+}
