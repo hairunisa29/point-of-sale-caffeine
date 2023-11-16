@@ -128,7 +128,7 @@ function MenuPage() {
           onSubmitModal={onSubmitModal}
           errors={errors}
           open={showModal}
-          handleShow={() => setShowModal(!showModal)}
+          handleClose={() => setShowModal(false)}
         />
       )}
 
