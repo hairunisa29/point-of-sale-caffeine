@@ -28,6 +28,7 @@ function MenuPage() {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -107,10 +108,19 @@ function MenuPage() {
   };
 
   const handleModalEdit = (id) => {
-    setModalTitle("Edit Item");
+    axios.get(`http://localhost:3000/products/${id}`).then((res) => {
+      setValue("productName", res.data.name);
+      setValue("category", res.data.category);
+      setValue("price", res.data.price);
+      setValue("stock", res.data.stock);
+      setModalTitle("Edit Item");
+      setShowModal(true);
+    });
   };
 
-  const handleDelete = (id) => {};
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:3000/products/${id}`);
+  };
 
   const onSubmitModal = (data) => {
     console.log(data);
@@ -128,7 +138,10 @@ function MenuPage() {
           onSubmitModal={onSubmitModal}
           errors={errors}
           open={showModal}
-          handleClose={() => setShowModal(false)}
+          handleClose={() => {
+            setShowModal(false);
+            reset();
+          }}
         />
       )}
 
