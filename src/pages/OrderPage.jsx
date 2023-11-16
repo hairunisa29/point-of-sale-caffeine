@@ -184,7 +184,7 @@ function OrderPage() {
             className={`w-full p-2 rounded-lg ${
               cartItems?.length === 0
                 ? "bg-blue-300"
-                : "bg-primary hover:bg-blue-700"
+                : "bg-primary hover:bg-blue-800"
             } text-white text-sm font-bold`}
             onClick={handleToPayment}
             disabled={cartItems?.length === 0}

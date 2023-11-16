@@ -39,7 +39,7 @@ function TransactionHistoryPage() {
         Cell: (props) => {
           return (
             <button
-              className="w-fit p-2 rounded-lg bg-primary hover:bg-blue-700 text-white"
+              className="w-fit p-2 rounded-lg bg-primary hover:bg-blue-800 text-white"
               onClick={() => navigate(`/history/${props.row.values.id}`)}
             >
               <HiEye />

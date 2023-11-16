@@ -133,7 +133,7 @@ function MenuPage() {
       )}
 
       <button
-        className="ml-auto mb-4 w-fit p-2 rounded-lg bg-primary hover:bg-blue-700 text-white text-sm font-bold"
+        className="ml-auto mb-4 w-fit p-2 rounded-lg bg-primary hover:bg-blue-800 text-white text-sm font-bold"
         onClick={handleModalAdd}
       >
         Add New Menu

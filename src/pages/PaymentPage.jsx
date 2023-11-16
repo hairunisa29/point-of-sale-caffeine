@@ -124,7 +124,7 @@ function PaymentPage() {
           className={`w-full p-2 rounded-lg ${
             paid < cartTotalPrice || paymentMethod === ""
               ? "bg-blue-300"
-              : "bg-primary hover:bg-blue-700"
+              : "bg-primary hover:bg-blue-800"
           } text-white text-sm font-bold`}
           onClick={handleFinishPayment}
           disabled={paid < cartTotalPrice || paymentMethod === ""}
