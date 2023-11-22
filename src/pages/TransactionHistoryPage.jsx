@@ -54,7 +54,7 @@ function TransactionHistoryPage() {
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
   const { data, isLoading } = useSWR(
-    "http://localhost:3000/booking",
+    `${import.meta.env.VITE_BACKEND_HOST}/orders`,
     fetchData,
     {
       onError: (error) => {

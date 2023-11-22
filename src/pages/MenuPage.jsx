@@ -91,7 +91,7 @@ function MenuPage() {
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
   const { data: dataProducts, isLoading } = useSWR(
-    "http://localhost:3000/products",
+    `${import.meta.env.VITE_BACKEND_HOST}/products`,
     fetchData,
     {
       onError: (error) => {
@@ -108,7 +108,7 @@ function MenuPage() {
   };
 
   const handleModalEdit = (id) => {
-    axios.get(`http://localhost:3000/products/${id}`).then((res) => {
+    axios.get(`${import.meta.env.VITE_BACKEND_HOST}/products/${id}`).then((res) => {
       setValue("productName", res.data.name);
       setValue("category", res.data.category);
       setValue("price", res.data.price);
@@ -119,7 +119,7 @@ function MenuPage() {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3000/products/${id}`);
+    axios.delete(`${import.meta.env.VITE_BACKEND_HOST}/products/${id}`);
   };
 
   const onSubmitModal = (data) => {

@@ -12,7 +12,7 @@ function TransactionDetailPage() {
 
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
-  const { data } = useSWR(`http://localhost:3000/booking/${id}`, fetchData);
+  const { data } = useSWR(`${import.meta.env.VITE_BACKEND_HOST}/orders/${id}`, fetchData);
 
   return (
     <section className="p-8">

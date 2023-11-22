@@ -31,7 +31,7 @@ function PaymentPage() {
       products: cartItems,
     };
     axios
-      .post("http://localhost:3000/booking", payload)
+      .post(`${import.meta.env.VITE_BACKEND_HOST}/orders`, payload)
       .then(() => {
         PopUpAlert(
           "Payment Succeed",

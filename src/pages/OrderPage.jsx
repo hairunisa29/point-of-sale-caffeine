@@ -30,7 +30,7 @@ function OrderPage() {
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
   const { data, isLoading } = useSWR(
-    "http://localhost:3000/products",
+    `${import.meta.env.VITE_BACKEND_HOST}/products`,
     fetchData,
     {
       onError: (error) => {
