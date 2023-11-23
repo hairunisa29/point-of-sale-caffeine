@@ -9,12 +9,13 @@ import * as yup from "yup";
 import axios from "../config/axios/axios";
 import Modal from "../components/Modal";
 import Table from "../components/Table";
-import { PopUpAlert } from "../utils/alert";
+import { PopUpAlert, ConfirmAlert } from "../utils/alert";
 import { formatCurrency } from "../utils/formatter";
 
 function MenuPage() {
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
+  const [productId, setProductId] = useState(null);
 
   const schema = yup.object().shape({
     productName: yup.string().required("Product Name is required"),
@@ -131,16 +132,25 @@ function MenuPage() {
       setValue("price", res.data.price);
       setValue("stock", res.data.stock);
       setModalTitle("Edit Item");
+      setProductId(id);
       setShowModal(true);
     });
   };
 
   const handleDelete = (id) => {
-    axios.delete(`/products/${id}`);
+    ConfirmAlert("Do you want to delete this product?").then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`/products/${id}`)
+          .then(() => mutate())
+          .catch((error) => {
+            PopUpAlert("Error", error?.message, "error");
+          });
+      }
+    });
   };
 
   const onSubmitModal = (data) => {
-    console.log(data);
     const payload = new FormData();
     payload.append("name", data.productName);
     payload.append("category", data.category);
@@ -148,28 +158,53 @@ function MenuPage() {
     payload.append("stock", parseInt(data.stock));
     payload.append("image", data.image[0]);
 
-    axios
-      .post("/products", payload, {
-        headers: {
-          contentType: "multipart/form-data",
-        },
-      })
-      .then(() => {
-        PopUpAlert(
-          "Product has been created",
-          "Successfully added a new product!",
-          "success"
-        ).then((result) => {
-          if (result.isConfirmed || result.isDismissed) {
-            reset();
-            setShowModal(false);
-            mutate();
-          }
+    if (modalTitle === "Add New Item") {
+      axios
+        .post("/products", payload, {
+          headers: {
+            contentType: "multipart/form-data",
+          },
+        })
+        .then(() => {
+          PopUpAlert(
+            "Product has been created",
+            "Successfully added a new product!",
+            "success"
+          ).then((result) => {
+            if (result.isConfirmed || result.isDismissed) {
+              reset();
+              setShowModal(false);
+              mutate();
+            }
+          });
+        })
+        .catch((error) => {
+          PopUpAlert("Error", error?.message, "error");
         });
-      })
-      .catch((error) => {
-        PopUpAlert("Error", error?.message, "error");
-      });
+    } else {
+      axios
+        .put(`/products/${productId}`, payload, {
+          headers: {
+            contentType: "multipart/form-data",
+          },
+        })
+        .then(() => {
+          PopUpAlert(
+            "Product has been updated",
+            "Successfully updated a product!",
+            "success"
+          ).then((result) => {
+            if (result.isConfirmed || result.isDismissed) {
+              reset();
+              setShowModal(false);
+              mutate();
+            }
+          });
+        })
+        .catch((error) => {
+          PopUpAlert("Error", error?.message, "error");
+        });
+    }
   };
 
   return (
