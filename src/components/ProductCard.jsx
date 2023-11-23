@@ -7,8 +7,8 @@ function ProductCard({ img, name, price, stock, onClickProduct }) {
       onClick={onClickProduct}
     >
       <img
-        alt="Home"
-        src={img}
+        alt={name}
+        src={`${import.meta.env.VITE_BACKEND_HOST}/${img}`}
         className="h-48 w-full rounded-md object-cover shadow-lg"
       />
 
