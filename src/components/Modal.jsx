@@ -97,7 +97,7 @@ function Modal({
               className="w-full p-2 rounded-lg bg-primary hover:bg-blue-800 text-white text-sm font-bold"
               type="submit"
             >
-              Submit
+              {title === "Edit Item" ? "Update" : "Create"}
             </button>
           </div>
         </form>
