@@ -1,10 +1,10 @@
 import { useMemo } from "react";
-import axios from "axios";
 import moment from "moment";
 import useSWR from "swr";
 import { HiEye } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
+import axios from "../config/axios/axios";
 import { formatCurrency } from "../utils/formatter";
 import Table from "../components/Table";
 import { PopUpAlert } from "../utils/alert";
@@ -53,17 +53,13 @@ function TransactionHistoryPage() {
 
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
-  const { data, isLoading } = useSWR(
-    `${import.meta.env.VITE_BACKEND_HOST}/orders`,
-    fetchData,
-    {
-      onError: (error) => {
-        if (error) {
-          PopUpAlert("Error", error?.message, "error");
-        }
-      },
-    }
-  );
+  const { data, isLoading } = useSWR("/orders", fetchData, {
+    onError: (error) => {
+      if (error) {
+        PopUpAlert("Error", error?.message, "error");
+      }
+    },
+  });
 
   return (
     <section className="flex flex-col p-8">

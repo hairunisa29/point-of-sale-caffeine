@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SyncLoader } from "react-spinners";
@@ -7,6 +6,7 @@ import { BiEditAlt } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import useSWR from "swr";
 import * as yup from "yup";
+import axios from "../config/axios/axios";
 import Modal from "../components/Modal";
 import Table from "../components/Table";
 import { PopUpAlert } from "../utils/alert";
@@ -107,17 +107,13 @@ function MenuPage() {
 
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
-  const { data: dataProducts, isLoading } = useSWR(
-    `${import.meta.env.VITE_BACKEND_HOST}/products`,
-    fetchData,
-    {
-      onError: (error) => {
-        if (error) {
-          PopUpAlert("Error", error?.message, "error");
-        }
-      },
-    }
-  );
+  const { data: dataProducts, isLoading } = useSWR("/products", fetchData, {
+    onError: (error) => {
+      if (error) {
+        PopUpAlert("Error", error?.message, "error");
+      }
+    },
+  });
 
   const handleModalAdd = () => {
     setModalTitle("Add New Item");
@@ -125,24 +121,26 @@ function MenuPage() {
   };
 
   const handleModalEdit = (id) => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_HOST}/products/${id}`)
-      .then((res) => {
-        setValue("productName", res.data.name);
-        setValue("category", res.data.category);
-        setValue("price", res.data.price);
-        setValue("stock", res.data.stock);
-        setModalTitle("Edit Item");
-        setShowModal(true);
-      });
+    axios.get(`/products/${id}`).then((res) => {
+      setValue("productName", res.data.name);
+      setValue("category", res.data.category);
+      setValue("price", res.data.price);
+      setValue("stock", res.data.stock);
+      setModalTitle("Edit Item");
+      setShowModal(true);
+    });
   };
 
   const handleDelete = (id) => {
-    axios.delete(`${import.meta.env.VITE_BACKEND_HOST}/products/${id}`);
+    axios.delete(`/products/${id}`);
   };
 
   const onSubmitModal = (data) => {
-    console.log(data);
+    axios.post("/booking-page", payload, {
+      headers: {
+        contentType: "multipart/form-data",
+      },
+    });
   };
 
   return (

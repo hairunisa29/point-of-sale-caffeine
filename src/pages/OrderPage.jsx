@@ -1,9 +1,9 @@
-import axios from "axios";
 import useSWR from "swr";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 import { GoSearch } from "react-icons/go";
+import axios from "../config/axios/axios";
 import { formatCurrency } from "../utils/formatter";
 import ProductCard from "../components/ProductCard";
 import CategoryItem from "../components/CategoryItem";
@@ -30,7 +30,7 @@ function OrderPage() {
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
   const { data, isLoading } = useSWR(
-    `${import.meta.env.VITE_BACKEND_HOST}/products`,
+    "/products",
     fetchData,
     {
       onError: (error) => {

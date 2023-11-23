@@ -1,8 +1,8 @@
 import { useState } from "react";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { paymentMethods } from "../data/Static";
+import axios from "../config/axios/axios";
 import OrderDetailItem from "../components/OrderDetailItem";
 import { clearCart } from "../store/reducers/cartSlice";
 import { formatCurrency } from "../utils/formatter";
@@ -31,7 +31,7 @@ function PaymentPage() {
       products: cartItems,
     };
     axios
-      .post(`${import.meta.env.VITE_BACKEND_HOST}/orders`, payload)
+      .post("/orders", payload)
       .then(() => {
         PopUpAlert(
           "Payment Succeed",

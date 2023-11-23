@@ -1,8 +1,8 @@
-import axios from "axios";
 import moment from "moment";
 import { useNavigate, useParams } from "react-router-dom";
 import { BsArrowLeftCircle } from "react-icons/bs";
 import useSWR from "swr";
+import axios from "../config/axios/axios";
 import OrderDetailItem from "../components/OrderDetailItem";
 import { formatCurrency } from "../utils/formatter";
 
@@ -12,7 +12,7 @@ function TransactionDetailPage() {
 
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
-  const { data } = useSWR(`${import.meta.env.VITE_BACKEND_HOST}/orders/${id}`, fetchData);
+  const { data } = useSWR(`/orders/${id}`, fetchData);
 
   return (
     <section className="p-8">
