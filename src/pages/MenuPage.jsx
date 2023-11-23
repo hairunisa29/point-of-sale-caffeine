@@ -107,7 +107,11 @@ function MenuPage() {
 
   const fetchData = (url) => axios.get(url).then((response) => response.data);
 
-  const { data: dataProducts, isLoading } = useSWR("/products", fetchData, {
+  const {
+    data: dataProducts,
+    isLoading,
+    mutate,
+  } = useSWR("/products", fetchData, {
     onError: (error) => {
       if (error) {
         PopUpAlert("Error", error?.message, "error");
@@ -136,11 +140,36 @@ function MenuPage() {
   };
 
   const onSubmitModal = (data) => {
-    axios.post("/booking-page", payload, {
-      headers: {
-        contentType: "multipart/form-data",
-      },
-    });
+    console.log(data);
+    const payload = new FormData();
+    payload.append("name", data.productName);
+    payload.append("category", data.category);
+    payload.append("price", parseInt(data.price));
+    payload.append("stock", parseInt(data.stock));
+    payload.append("image", data.image[0]);
+
+    axios
+      .post("/products", payload, {
+        headers: {
+          contentType: "multipart/form-data",
+        },
+      })
+      .then(() => {
+        PopUpAlert(
+          "Product has been created",
+          "Successfully added a new product!",
+          "success"
+        ).then((result) => {
+          if (result.isConfirmed || result.isDismissed) {
+            reset();
+            setShowModal(false);
+            mutate();
+          }
+        });
+      })
+      .catch((error) => {
+        PopUpAlert("Error", error?.message, "error");
+      });
   };
 
   return (
