@@ -13,7 +13,7 @@ function CartItem({
   return (
     <div className="flex gap-4 p-4 rounded-lg bg-gray-100">
       <div className="rounded-lg w-16 h-16">
-        <img src={image} className="rounded-lg w-full h-full object-cover shadow-md" />
+        <img src={`${import.meta.env.VITE_BACKEND_HOST}/${image}`} className="rounded-lg w-full h-full object-cover shadow-md" />
       </div>
 
       <div className="w-[197.72px]">
