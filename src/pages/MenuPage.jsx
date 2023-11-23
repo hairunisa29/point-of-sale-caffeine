@@ -42,6 +42,23 @@ function MenuPage() {
       {
         Header: "Product Name",
         accessor: "name",
+        Cell: (props) => {
+          return (
+            <div className="flex gap-4">
+              <div className="rounded-lg w-16 h-16">
+                <img
+                  src={`${import.meta.env.VITE_BACKEND_HOST}/${
+                    props.row.original.image
+                  }`}
+                  alt={props.row.values.name}
+                  className="rounded-lg w-full h-full object-cover shadow-md"
+                />
+              </div>
+
+              <span className="self-center">{props.row.values.name}</span>
+            </div>
+          );
+        },
       },
       {
         Header: "Product ID",
@@ -108,14 +125,16 @@ function MenuPage() {
   };
 
   const handleModalEdit = (id) => {
-    axios.get(`${import.meta.env.VITE_BACKEND_HOST}/products/${id}`).then((res) => {
-      setValue("productName", res.data.name);
-      setValue("category", res.data.category);
-      setValue("price", res.data.price);
-      setValue("stock", res.data.stock);
-      setModalTitle("Edit Item");
-      setShowModal(true);
-    });
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_HOST}/products/${id}`)
+      .then((res) => {
+        setValue("productName", res.data.name);
+        setValue("category", res.data.category);
+        setValue("price", res.data.price);
+        setValue("stock", res.data.stock);
+        setModalTitle("Edit Item");
+        setShowModal(true);
+      });
   };
 
   const handleDelete = (id) => {
