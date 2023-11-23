@@ -25,7 +25,7 @@ function TransactionHistoryPage() {
       },
       {
         Header: "Order ID",
-        accessor: "id",
+        accessor: "_id",
         disableSortBy: true,
       },
       {
