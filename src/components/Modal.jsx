@@ -42,7 +42,7 @@ function Modal({
               className="w-full rounded-md border-[1px] border-gray-200 py-3 px-2 shadow-sm sm:text-sm"
               {...register("category")}
             >
-              <option value="" disabled>
+              <option value="" disabled selected>
                 Select Category
               </option>
               <option value="Coffee">Coffee</option>
