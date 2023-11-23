@@ -39,7 +39,7 @@ function TransactionDetailPage() {
         </div>
 
         <div className="flex flex-col mb-4 gap-4">
-          {data?.products.map((product) => (
+          {data?.orderItems.map((product) => (
             <OrderDetailItem
               key={product._id}
               image={product.image}
