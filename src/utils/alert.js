@@ -8,3 +8,13 @@ export const PopUpAlert = (title, text, icon) => {
     confirmButtonColor: "#2457ca",
   });
 };
+
+export const ConfirmAlert = (title) => {
+  return Swal.fire({
+    title,
+    showDenyButton: true,
+    confirmButtonText: "Yes",
+    denyButtonText: "No",
+    confirmButtonColor: "#2457ca",
+  });
+};
