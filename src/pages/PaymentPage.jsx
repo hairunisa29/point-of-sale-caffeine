@@ -56,8 +56,8 @@ function PaymentPage() {
         <div className="flex flex-col gap-4">
           {cartItems?.map((item) => (
             <OrderDetailItem
-              key={item.id}
-              image={item.img}
+              key={item._id}
+              image={item.image}
               name={item.name}
               price={item.price}
               qty={item.quantity}

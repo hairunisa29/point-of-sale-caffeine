@@ -133,8 +133,8 @@ function OrderPage() {
             <div className="grid grid-cols-3 gap-4">
               {products?.map((product) => (
                 <ProductCard
-                  key={product.id}
-                  img={product.img}
+                  key={product._id}
+                  img={product.image}
                   name={product.name}
                   price={product.price}
                   stock={product.stock}
@@ -156,14 +156,14 @@ function OrderPage() {
             {cartItems?.length > 0 ? (
               cartItems?.map((item) => (
                 <CartItem
-                  key={item.id}
-                  image={item.img}
+                  key={item._id}
+                  image={item.image}
                   name={item.name}
                   price={item.price}
                   qty={item.quantity}
-                  handleIncrement={() => handleIncrement(item.id)}
-                  handleDecrement={() => handleDecrement(item.id)}
-                  handleRemoveCartItem={() => handleRemoveCartItem(item.id)}
+                  handleIncrement={() => handleIncrement(item._id)}
+                  handleDecrement={() => handleDecrement(item._id)}
+                  handleRemoveCartItem={() => handleRemoveCartItem(item._id)}
                 />
               ))
             ) : (

@@ -45,7 +45,7 @@ function MenuPage() {
       },
       {
         Header: "Product ID",
-        accessor: "id",
+        accessor: "_id",
         disableSortBy: true,
       },
       {
@@ -69,14 +69,14 @@ function MenuPage() {
             <div className="flex gap-4">
               <button
                 className="rounded-lg bg-yellow-500 hover:bg-yellow-700 text-white w-fit p-2"
-                onClick={() => handleModalEdit(props.row.values.id)}
+                onClick={() => handleModalEdit(props.row.values._id)}
               >
                 <BiEditAlt />
               </button>
 
               <button
                 className="rounded-lg bg-red-500 hover:bg-red-700 text-white w-fit p-2"
-                onClick={() => handleDelete(props.row.values.id)}
+                onClick={() => handleDelete(props.row.values._id)}
               >
                 <RiDeleteBin5Line />
               </button>

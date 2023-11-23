@@ -25,7 +25,7 @@ function TransactionDetailPage() {
       </div>
 
       <div className="p-4 rounded-lg bg-white">
-        <h3 className="font-bold">Order ID #{data?.id}</h3>
+        <h3 className="font-bold">Order ID #{data?._id}</h3>
         <h3 className="text-sm">{moment(data?.createdAt).format("LLL")}</h3>
 
         <h3 className="my-4 font-bold">Products</h3>
@@ -41,8 +41,8 @@ function TransactionDetailPage() {
         <div className="flex flex-col mb-4 gap-4">
           {data?.products.map((product) => (
             <OrderDetailItem
-              key={product.id}
-              image={product.img}
+              key={product._id}
+              image={product.image}
               name={product.name}
               price={product.price}
               qty={product.quantity}

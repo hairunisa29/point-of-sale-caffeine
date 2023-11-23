@@ -40,7 +40,7 @@ function TransactionHistoryPage() {
           return (
             <button
               className="w-fit p-2 rounded-lg bg-primary hover:bg-blue-800 text-white"
-              onClick={() => navigate(`/history/${props.row.values.id}`)}
+              onClick={() => navigate(`/history/${props.row.values._id}`)}
             >
               <HiEye />
             </button>
