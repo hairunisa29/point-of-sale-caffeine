@@ -10,7 +10,7 @@ function OrderDetailItem({ image, name, price, qty, page }) {
       <div className="col-span-2 flex gap-4">
         <div className="rounded-lg w-20 h-20">
           <img
-            src={image}
+            src={`${import.meta.env.VITE_BACKEND_HOST}/${image}`}
             alt={name}
             className="rounded-lg w-full h-full object-cover shadow-md"
           />
