@@ -25,11 +25,11 @@ function PaymentPage() {
 
   const handleFinishPayment = () => {
     const payload = {
-      createdAt: new Date(),
       totalPrice: cartTotalPrice,
       paymentMethod,
-      products: cartItems,
+      orderItems: cartItems,
     };
+
     axios
       .post("/orders", payload)
       .then(() => {
